@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-"""script that returns the user and a
-list of total tasks and completed tasks"""
+"""
+script that returns the user and a
+list of total tasks and completed tasks
+"""
 import requests
 import sys
 
