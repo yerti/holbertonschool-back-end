@@ -48,8 +48,9 @@ def get_todo_list_progress(employee_id: int) -> str:
     return first_line + next_line
 
 
-employee_id = sys.argv[1]
+if __name__ == '__main__':
+    employee_id = sys.argv[1]
 
-output = get_todo_list_progress(employee_id)
+    output = get_todo_list_progress(employee_id)
 
-print(output)
+    print(output, end="")
