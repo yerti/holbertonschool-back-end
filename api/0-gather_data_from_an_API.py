@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-"""
-script that returns the user and a list
-of total tasks and completed tasks
-"""
+"""script that returns the user and a
+list of total tasks and completed tasks"""
 import requests
 import sys
 
@@ -17,25 +15,20 @@ endpoints = {
 
 
 def get_todo_list_progress(employee_id: int) -> str:
-    """
-    We get the employee with id employee_id
-    """
+    """We get the employee with id employee_id"""
     get_employee_endpoint = f"{endpoints['users']}/{employee_id}"
     employee_response = requests.get(get_employee_endpoint)
     employee = employee_response.json()
 
-    """
-    We get the list of tasks of the employee with id employee_id
-    """
+    """We get the list of tasks of the employee with id employee_id"""
     get_employee_todos_endpoint = f"{endpoints['todos']}?userId={employee_id}"
     todos_response = requests.get(get_employee_todos_endpoint)
     todos = todos_response.json()
 
-    todos_quantity = len(todos)
+    to_len = len(todos)
 
-    """
-    We filter the tasks to get the list of completed and uncompleted tasks
-    """
+    """We filter the tasks to get the list
+    of completed and uncompleted tasks"""
     completed_todos = []
 
     for todo in todos:
@@ -43,8 +36,8 @@ def get_todo_list_progress(employee_id: int) -> str:
             completed_todos.append(todo)
     com_to_qu = len(completed_todos)
 
-    employee = "Employee {employee['name']} is done with tasks"
-    first_line = f"{employee}({com_to_qu}/{todos_quantity}):\n"
+    text = "is done with tasks"
+    first_line = f"Employee {employee['name']} {text}({com_to_qu}/{to_len}):\n"
 
     next_line = ''
     for completed_todo in completed_todos:
